@@ -1,0 +1,14 @@
+{:source-paths ["src"]
+ :dependencies [[reagent "1.1.0"]]
+ :dev-http {3000 {:root "compiled"}}
+ :ssl {:keystore  "/Users/Vladimir/_certifiable_certs/localhost-1d070e4/dev-server.jks",
+       :password "password"}
+ :builds {:app {:target :browser
+                :js-options {:resolve {"office" {:target :global
+                                                 :global "Office"}}}
+                :output-dir "compiled/"
+                :module-loader true
+                :modules
+                {:taskpane {:entries [taskpane]}
+                 :commands {:depends-on #{:taskpane}}}}}}
+
